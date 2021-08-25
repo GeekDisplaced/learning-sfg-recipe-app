@@ -17,10 +17,10 @@ public class Recipe {
     private Integer servings;
     private String url;
     private String directions;
+    @Enumerated(value = EnumType.STRING)
+    private Difficulty difficulty;
     @Lob
     private Byte[] image;
-    //TODO add
-    //private Difficulty difficulty;
 
     // relationships
     // if delete, delete children...
@@ -28,6 +28,10 @@ public class Recipe {
     private Notes notes;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
     private Set<Ingredient> ingredients;
+
+    public Long getId() {
+        return Id;
+    }
 
     public String getDescription() {
         return description;
@@ -83,6 +87,26 @@ public class Recipe {
 
     public void setImage(Byte[] image) {
         this.image = image;
+    }
+
+    public void setId(Long id) {
+        Id = id;
+    }
+
+    public Difficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    public Set<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(Set<Ingredient> ingredients) {
+        this.ingredients = ingredients;
     }
 
     public Notes getNotes() {
