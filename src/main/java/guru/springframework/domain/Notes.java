@@ -17,6 +17,8 @@ public class Notes {
     @OneToOne
     private Recipe recipe;
 
+
+
     public String getNotes() {
         return notes;
     }
