@@ -7,3 +7,6 @@ INSERT INTO unitOM (description) VALUES ('Tablespoon');
 INSERT INTO unitOM (description) VALUES ('Cup');
 INSERT INTO unitOM (description) VALUES ('Pinch');
 INSERT INTO unitOM (description) VALUES ('Ounce');
+INSERT INTO unitOM (description) VALUES ('Each');
+INSERT INTO unitOM (description) VALUES ('Dash');
+INSERT INTO unitOM (description) VALUES ('Pint');
