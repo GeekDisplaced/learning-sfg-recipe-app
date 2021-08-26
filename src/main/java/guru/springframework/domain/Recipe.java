@@ -120,12 +120,32 @@ public class Recipe {
         this.ingredients = ingredients;
     }
 
+    public Recipe addIngredient(Ingredient ingredient) {
+
+        // add ingredient from this.ingredients
+        ingredient.setRecipe(this);
+        this.ingredients.add(ingredient);
+
+        return this;
+    }
+
+    public Recipe removeIngredient(Ingredient ingredient) {
+
+        // remove ingredient from this.ingredients
+        // destroy ingredient ???
+        this.ingredients.remove(ingredient);
+
+        return this;
+    }
+
     public Notes getNotes() {
         return notes;
     }
 
     public void setNotes(Notes notes) {
+
         this.notes = notes;
+        notes.setRecipe(this);
     }
 
     public Set<Category> getCategories() {
@@ -135,4 +155,6 @@ public class Recipe {
     public void setCategories(Set<Category> categories) {
         this.categories = categories;
     }
+
+
 }
