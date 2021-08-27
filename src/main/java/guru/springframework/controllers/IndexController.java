@@ -6,6 +6,7 @@ import guru.springframework.repositories.CategoryRepository;
 import guru.springframework.repositories.RecipeRepository;
 import guru.springframework.repositories.UnitOMRepository;
 import guru.springframework.services.RecipeService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,30 +16,21 @@ import java.util.Optional;
 /**
  * Created by jt on 6/1/17.
  */
+@Slf4j
 @Controller
 public class IndexController {
 
-    private CategoryRepository categoryRepository;
-    private UnitOMRepository unitOMRepository;
-    // private RecipeRepository recipeRepository;
     private final RecipeService recipeService;
 
-    public IndexController(CategoryRepository categoryRepository, UnitOMRepository unitOMRepository, RecipeRepository recipeRepository, RecipeService recipeService) {
-        this.categoryRepository = categoryRepository;
-        this.unitOMRepository = unitOMRepository;
-        // this.recipeRepository = recipeRepository;
+    public IndexController(RecipeService recipeService) {
+
+        log.debug("Getting Index Page");
 
         this.recipeService = recipeService;
     }
 
     @RequestMapping({"", "/", "/index"})
     public String getIndexPage(Model model) {
-
-        Optional<Category> categoryOptional = categoryRepository.findByDescription("American");
-        System.out.println("Category Id: " + categoryOptional.get().getId());
-
-        Optional<UnitOM> unitOMOptional = unitOMRepository.findByDescription("Teaspoon");
-        System.out.println("Unit of Measure Id: " + unitOMOptional.get().getId());
 
         model.addAttribute("recipes", recipeService.getRecipes());
 

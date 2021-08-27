@@ -1,8 +1,19 @@
 package guru.springframework.domain;
 
+
+
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 
+
+@Table(name = "Notes")
 @Entity
+@Getter
+@Setter
+@RequiredArgsConstructor
 public class Notes {
 
     @Id
@@ -17,22 +28,4 @@ public class Notes {
     @OneToOne
     private Recipe recipe;
 
-
-
-    public String getNotes() {
-        return notes;
-    }
-
-    public void setNotes(String notes) {
-        this.notes = notes;
-    }
-
-    public Recipe getRecipe() {
-        return recipe;
-    }
-
-    public void setRecipe(Recipe recipe) {
-
-        this.recipe = recipe;
-    }
 }

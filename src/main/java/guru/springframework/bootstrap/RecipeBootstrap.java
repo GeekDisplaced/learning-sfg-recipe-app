@@ -4,6 +4,7 @@ import guru.springframework.domain.*;
 import guru.springframework.repositories.CategoryRepository;
 import guru.springframework.repositories.RecipeRepository;
 import guru.springframework.repositories.UnitOMRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
@@ -16,6 +17,7 @@ import java.util.Optional;
 /**
  * Created by jt on 6/13/17.
  */
+@Slf4j
 @Component
 public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
@@ -30,8 +32,12 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
     }
 
     @Override
+    //@Transactional ...if we see a lazy initialisation Exception
     public void onApplicationEvent(ContextRefreshedEvent event) {
+
         recipeRepository.saveAll(getRecipes());
+
+        log.debug("Loading Bootstrap Data");
     }
 
     private List<Recipe> getRecipes() {
@@ -43,37 +49,37 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
 
         //This section is for testing purposes ... should be done as tests with bootstrap data sets.
 
-        if(!eachUomOptional.isPresent()){
+        if(eachUomOptional.isEmpty()){
             throw new RuntimeException("Expected UOM Not Found");
         }
 
         Optional<UnitOM> tableSpoonUomOptional = unitOMRepository.findByDescription("Tablespoon");
 
-        if(!tableSpoonUomOptional.isPresent()){
+        if(tableSpoonUomOptional.isEmpty()){
             throw new RuntimeException("Expected UOM Not Found");
         }
 
         Optional<UnitOM> teaSpoonUomOptional = unitOMRepository.findByDescription("Teaspoon");
 
-        if(!teaSpoonUomOptional.isPresent()){
+        if(teaSpoonUomOptional.isEmpty()){
             throw new RuntimeException("Expected UOM Not Found");
         }
 
         Optional<UnitOM> dashUomOptional = unitOMRepository.findByDescription("Dash");
 
-        if(!dashUomOptional.isPresent()){
+        if(dashUomOptional.isEmpty()){
             throw new RuntimeException("Expected UOM Not Found");
         }
 
         Optional<UnitOM> pintUomOptional = unitOMRepository.findByDescription("Pint");
 
-        if(!pintUomOptional.isPresent()){
+        if(pintUomOptional.isEmpty()){
             throw new RuntimeException("Expected UOM Not Found");
         }
 
         Optional<UnitOM> cupsUomOptional = unitOMRepository.findByDescription("Cup");
 
-        if(!cupsUomOptional.isPresent()){
+        if(cupsUomOptional.isEmpty()){
             throw new RuntimeException("Expected UOM Not Found");
         }
 
@@ -88,13 +94,13 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         //get Categories
         Optional<Category> americanCategoryOptional = categoryRepository.findByDescription("American");
 
-        if(!americanCategoryOptional.isPresent()){
+        if(americanCategoryOptional.isEmpty()){
             throw new RuntimeException("Expected Category Not Found");
         }
 
         Optional<Category> mexicanCategoryOptional = categoryRepository.findByDescription("Mexican");
 
-        if(!mexicanCategoryOptional.isPresent()){
+        if(mexicanCategoryOptional.isEmpty()){
             throw new RuntimeException("Expected Category Not Found");
         }
 

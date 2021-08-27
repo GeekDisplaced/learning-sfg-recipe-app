@@ -1,11 +1,18 @@
 package guru.springframework.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.Data;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
+import javax.persistence.*;
+
+
+@Table(name = "UnitOM")
 @Entity
+@Getter
+@Setter
+@RequiredArgsConstructor
 public class UnitOM {
 
     @Id
@@ -14,23 +21,5 @@ public class UnitOM {
 
     // attribute
     private String description;
-
-
-
-    public Long getId() {
-        return Id;
-    }
-
-    public void setId(Long id) {
-        Id = id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
 }
