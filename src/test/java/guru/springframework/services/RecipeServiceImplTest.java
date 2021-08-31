@@ -38,10 +38,11 @@ public class RecipeServiceImplTest {
         // mock behaviour
         when(recipeRepository.findAll()).thenReturn(recipesData);
 
+        // code under test
         Set<Recipe> recipes = recipeService.getRecipes();
 
+        // test assertions
         assertEquals(1, recipes.size());
-
         verify(recipeRepository, times(1)).findAll();
     }
 }
