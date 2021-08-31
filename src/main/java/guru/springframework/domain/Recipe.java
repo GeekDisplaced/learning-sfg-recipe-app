@@ -9,7 +9,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Table(name = "Recipe")
-
 @Entity
 @Getter
 @Setter
