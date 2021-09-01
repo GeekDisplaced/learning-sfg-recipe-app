@@ -1,7 +1,7 @@
 package guru.springframework.converters;
 
 import guru.springframework.commands.IngredientCommand;
-import guru.springframework.commands.UnitOfMeasureCommand;
+import guru.springframework.commands.UnitOMCommand;
 import guru.springframework.domain.Ingredient;
 import guru.springframework.domain.Recipe;
 import org.junit.Before;
@@ -23,7 +23,7 @@ public class IngredientCommandToIngredientTest {
 
     @Before
     public void setUp() throws Exception {
-        converter = new IngredientCommandToIngredient(new UnitOfMeasureCommandToUnitOfMeasure());
+        converter = new IngredientCommandToIngredient(new UnitOMCommandToUnitOM());
     }
 
     @Test
@@ -43,20 +43,20 @@ public class IngredientCommandToIngredientTest {
         command.setId(ID_VALUE);
         command.setAmount(AMOUNT);
         command.setDescription(DESCRIPTION);
-        UnitOfMeasureCommand unitOfMeasureCommand = new UnitOfMeasureCommand();
-        unitOfMeasureCommand.setId(UOM_ID);
-        command.setUnitOfMeasure(unitOfMeasureCommand);
+        UnitOMCommand unitOMCommand = new UnitOMCommand();
+        unitOMCommand.setId(UOM_ID);
+        command.setUnitOfMeasure(unitOMCommand);
 
         //when
         Ingredient ingredient = converter.convert(command);
 
         //then
         assertNotNull(ingredient);
-        assertNotNull(ingredient.getUom());
+        assertNotNull(ingredient.getUnitOM());
         assertEquals(ID_VALUE, ingredient.getId());
         assertEquals(AMOUNT, ingredient.getAmount());
         assertEquals(DESCRIPTION, ingredient.getDescription());
-        assertEquals(UOM_ID, ingredient.getUom().getId());
+        assertEquals(UOM_ID, ingredient.getUnitOM().getId());
     }
 
     @Test
@@ -66,7 +66,7 @@ public class IngredientCommandToIngredientTest {
         command.setId(ID_VALUE);
         command.setAmount(AMOUNT);
         command.setDescription(DESCRIPTION);
-        UnitOfMeasureCommand unitOfMeasureCommand = new UnitOfMeasureCommand();
+        UnitOMCommand unitOMCommand = new UnitOMCommand();
 
 
         //when
@@ -74,7 +74,7 @@ public class IngredientCommandToIngredientTest {
 
         //then
         assertNotNull(ingredient);
-        assertNull(ingredient.getUom());
+        assertNull(ingredient.getUnitOM());
         assertEquals(ID_VALUE, ingredient.getId());
         assertEquals(AMOUNT, ingredient.getAmount());
         assertEquals(DESCRIPTION, ingredient.getDescription());
