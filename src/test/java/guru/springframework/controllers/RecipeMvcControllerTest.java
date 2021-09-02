@@ -10,25 +10,24 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-public class RecipeControllerTest {
+public class RecipeMvcControllerTest {
 
     @Mock
     RecipeService recipeService;
 
     // code under test
-    RecipeController recipeController;
+    RecipeMvcController recipeMvcController;
 
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 
-        recipeController = new RecipeController((recipeService));
+        recipeMvcController = new RecipeMvcController((recipeService));
     }
 
     @After
@@ -42,7 +41,7 @@ public class RecipeControllerTest {
         Recipe recipe = new Recipe();
         recipe.setId(1L);
 
-        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(recipeController).build();
+        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(recipeMvcController).build();
 
         // mock behaviour
         when(recipeService.findRecipeById( anyLong()) ).thenReturn(recipe);

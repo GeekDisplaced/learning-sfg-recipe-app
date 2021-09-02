@@ -13,11 +13,11 @@ import java.util.Optional;
  */
 @Slf4j
 @Controller
-public class IndexController {
+public class IndexMvcController {
 
     private final RecipeService recipeService;
 
-    public IndexController(RecipeService recipeService) {
+    public IndexMvcController(RecipeService recipeService) {
 
         log.debug("Getting Index Page");
 

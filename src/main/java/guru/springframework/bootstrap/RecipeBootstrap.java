@@ -135,9 +135,8 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
                 "\n" +
                 "Read more: http://www.simplyrecipes.com/recipes/perfect_guacamole/#ixzz4jvoun5ws");
 
-        // REFACTORED this into the related setter methods
-        // guacamoleNotes.setRecipe(guacamoleRecipe);
-        // guacamoleRecipe.setNotes(guacamoleNotes);
+         guacamoleNotes.setRecipe(guacamoleRecipe);
+         guacamoleRecipe.setNotes(guacamoleNotes);
 
         // TODO REFACTOR this to provide addIngredient() helper methods
         guacamoleRecipe.addIngredient(new Ingredient("ripe avocados", new BigDecimal(2), eachUom, guacamoleRecipe));

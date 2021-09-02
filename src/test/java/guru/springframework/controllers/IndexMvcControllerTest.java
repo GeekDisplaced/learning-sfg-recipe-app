@@ -20,10 +20,10 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
-public class IndexControllerTest {
+public class IndexMvcControllerTest {
 
 
-    IndexController indexController;
+    IndexMvcController indexMvcController;
 
     @Mock
     RecipeService recipeService;
@@ -35,7 +35,7 @@ public class IndexControllerTest {
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 
-        indexController = new IndexController(recipeService);
+        indexMvcController = new IndexMvcController(recipeService);
     }
 
     @Test
@@ -64,7 +64,7 @@ public class IndexControllerTest {
 
     // WHEN...
         // code under test
-        String viewName = indexController.getIndexPage(model);
+        String viewName = indexMvcController.getIndexPage(model);
 
     // THEN...
         // test assertions
@@ -78,7 +78,7 @@ public class IndexControllerTest {
 
     @Test
     public void testMockMvc() throws Exception {
-        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(indexController).build();
+        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(indexMvcController).build();
 
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
