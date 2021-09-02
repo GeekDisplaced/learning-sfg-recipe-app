@@ -9,8 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.Optional;
-
 import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
@@ -31,17 +29,17 @@ public class UnitOMRepositoryIT {
     @Test
     public void findByDescription_Teaspoon() {
 
-        UnitOM UnitOM = unitOMRepository.findByDescription("Teaspoon").orElse(null);
+        UnitOM unitOM = unitOMRepository.findByDescription("Teaspoon").orElse(null);
 
-        assertEquals("Teaspoon", UnitOM.getDescription());
+        assertEquals("Teaspoon", unitOM.getDescription());
     }
 
     @Test
     public void findByDescription_Cup() {
 
-        UnitOM UnitOM = unitOMRepository.findByDescription("Cup").orElse(null);
+        UnitOM unitOM = unitOMRepository.findByDescription("Cup").orElse(null);
 
-        assertEquals("Cup", UnitOM.getDescription());
+        assertEquals("Cup", unitOM.getDescription());
     }
 
     @Test

@@ -3,7 +3,7 @@ package guru.springframework.converters;
 import guru.springframework.commands.IngredientCommand;
 import guru.springframework.domain.Ingredient;
 import guru.springframework.domain.Recipe;
-import guru.springframework.domain.UnitOfMeasure;
+import guru.springframework.domain.UnitOM;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -48,11 +48,11 @@ public class IngredientToIngredientCommandTest {
         ingredient.setRecipe(RECIPE);
         ingredient.setAmount(AMOUNT);
         ingredient.setDescription(DESCRIPTION);
-        ingredient.setUom(null);
+        ingredient.setUnitOM(null);
         //when
         IngredientCommand ingredientCommand = converter.convert(ingredient);
         //then
-        assertNull(ingredientCommand.getUnitOfMeasure());
+        assertNull(ingredientCommand.getUnitOM());
         assertEquals(ID_VALUE, ingredientCommand.getId());
        // assertEquals(RECIPE, ingredientCommand.get);
         assertEquals(AMOUNT, ingredientCommand.getAmount());
@@ -68,16 +68,16 @@ public class IngredientToIngredientCommandTest {
         ingredient.setAmount(AMOUNT);
         ingredient.setDescription(DESCRIPTION);
 
-        UnitOfMeasure uom = new UnitOfMeasure();
-        uom.setId(UOM_ID);
+        UnitOM unitOM = new UnitOM();
+        unitOM.setId(UOM_ID);
 
-        ingredient.setUom(uom);
+        ingredient.setUnitOM(unitOM);
         //when
         IngredientCommand ingredientCommand = converter.convert(ingredient);
         //then
         assertEquals(ID_VALUE, ingredientCommand.getId());
-        assertNotNull(ingredientCommand.getUnitOfMeasure());
-        assertEquals(UOM_ID, ingredientCommand.getUnitOfMeasure().getId());
+        assertNotNull(ingredientCommand.getUnitOM());
+        assertEquals(UOM_ID, ingredientCommand.getUnitOM().getId());
         // assertEquals(RECIPE, ingredientCommand.get);
         assertEquals(AMOUNT, ingredientCommand.getAmount());
         assertEquals(DESCRIPTION, ingredientCommand.getDescription());

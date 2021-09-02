@@ -19,7 +19,7 @@ public class RecipeCommandToRecipeTest {
     public static final String DIRECTIONS = "Directions";
     public static final Difficulty DIFFICULTY = Difficulty.EASY;
     public static final Integer SERVINGS = Integer.valueOf("3");
-    public static final String SOURCE = "Source";
+    //public static final String SOURCE = "Source";
     public static final String URL = "Some URL";
     public static final Long CAT_ID_1 = 1L;
     public static final Long CAT_ID2 = 2L;
@@ -58,7 +58,7 @@ public class RecipeCommandToRecipeTest {
         recipeCommand.setDifficulty(DIFFICULTY);
         recipeCommand.setDirections(DIRECTIONS);
         recipeCommand.setServings(SERVINGS);
-        recipeCommand.setSource(SOURCE);
+        //recipeCommand.setSource(SOURCE);
         recipeCommand.setUrl(URL);
 
         NotesCommand notes = new NotesCommand();
@@ -95,7 +95,7 @@ public class RecipeCommandToRecipeTest {
         assertEquals(DIFFICULTY, recipe.getDifficulty());
         assertEquals(DIRECTIONS, recipe.getDirections());
         assertEquals(SERVINGS, recipe.getServings());
-        assertEquals(SOURCE, recipe.getSource());
+        //assertEquals(SOURCE, recipe.getSource());
         assertEquals(URL, recipe.getUrl());
         assertEquals(NOTES_ID, recipe.getNotes().getId());
         assertEquals(2, recipe.getCategories().size());

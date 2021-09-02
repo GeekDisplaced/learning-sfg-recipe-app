@@ -1,10 +1,5 @@
 package guru.springframework.controllers;
 
-import guru.springframework.domain.Category;
-import guru.springframework.domain.UnitOM;
-import guru.springframework.repositories.CategoryRepository;
-import guru.springframework.repositories.RecipeRepository;
-import guru.springframework.repositories.UnitOMRepository;
 import guru.springframework.services.RecipeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;

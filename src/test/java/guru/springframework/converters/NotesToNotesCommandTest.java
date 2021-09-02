@@ -26,7 +26,7 @@ public class NotesToNotesCommandTest {
         //given
         Notes notes = new Notes();
         notes.setId(ID_VALUE);
-        notes.setRecipeNotes(RECIPE_NOTES);
+        notes.setNotes(RECIPE_NOTES);
 
         //when
         NotesCommand notesCommand = converter.convert(notes);
